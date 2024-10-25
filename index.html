@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>MMFP</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+  <style>
+    .pretty-number {
+      display: inline-block;
+      background-color: #000000; /* Choose a color */
+      color: white;
+      font-weight: bold;
+      font-size: 1.0em;
+      width: 1.5em;
+      height: 1.5em;
+      line-height: 1.5em;
+      text-align: center;
+      border-radius: 40%; /* Makes the background circular */
+      margin-right: 8px; /* Adds spacing between number and text */
+    }
+  </style>
+  
+  <style>
+    .pretty-exclamation {
+      display: inline-block;
+      background-color: #ff0000;
+      color: #ffffff;
+      font-weight: bold;
+      font-size: 1.2em;
+      padding: 2px 12px;
+      border-radius: 30%;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+      margin-right: 8px;
+    }
+  </style>
+
+</head>
+
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://www.gabe-yhlee.com">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://www.youtube.com/watch?v=I0445IET0FY">
+            MMP tutorial (ICRA 2024)
+          </a>
+          <a class="navbar-item" href="https://proceedings.mlr.press/v229/lee23a.html">
+            EMMP (CoRL 2023)
+          </a>
+          <a class="navbar-item" href="https://mmpplusplus.github.io/">
+            MMP++ (T-RO 2024)
+          </a>
+          <a class="navbar-item" href="https://mmflowp.github.io/">
+            MMFP (Arxiv)
+          </a>
+          <a class="navbar-item" href="https://arxiv.org/abs/2410.12193">
+            DMMP (Arxiv)
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          
+          <!-- Title. -->
+          <h1 class="title is-2 publication-title">Motion Manifold Flow Primitives for Language-Guided Trajectory Generation</h1>
+          <p class="subtitle">Under review</p>
+          
+          <!-- Authors. -->
+          <div class="is-size-5 publication-authors">
+            </span>
+            <span class="author-block">
+              <a href="https://www.gabe-yhlee.com">Yonghyeon Lee</a>,
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Korea Institute For Advanced Study</span>
+          </div>
+
+          <!-- Icons. -->
+          <div class="column has-text-centered">
+            <div class="publication-links">
+
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2407.19681"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://https://mmpplusplus.github.io/"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code (Coming soon)</span>
+                  </a>
+              </span>
+
+            </div>
+          </div>
+          
+          <!-- Blank. -->
+          <div class="columns is-centered">
+            <div class="content">
+              <h2 class="title is-3"></h2>
+            </div>            
+          </div>
+
+          <!-- TL;DR. -->
+          <div class="columns is-centered has-text-justified interpolation-panel" 
+               style="max-width: 1000px; background-color: #f5f5f5;">
+            <div class="column is-full-width">
+              <p style="color: #333333; font-size: 1.25em; font-weight: bold;">
+                TL;DR: MMFP can generate motions from text inputs, 
+                capturing complex text dependencies in motion distributions 
+                while simultaneously addressing the challenges posed 
+                by high-dimensional trajectory data and small dataset sizes.
+              </p>
+            </div>
+          </div>
+          
+          <!-- Video. -->
+          <div class="columns is-left" style="margin-top: 40px;">
+            <div class="content">
+              <h2 class="title is-4">Example 1: SE(3) Pouring Motion</h2>
+            </div>            
+          </div>
+
+          <div class="columns is-centered">
+            <div class="column has-text-centered">
+              <div class="content">
+                <p2 class="title is-6"><strong>Can I have a drink, <br> whatever you've got?</strong></p2>
+                <video id="sd" autoplay controls muted loop playsinline style="height: 300px; margin-top: 20px;">
+                  <source src="./assets/videos/MMFP (unseen, whatever).mp4"
+                          type="video/mp4">
+                </video>
+              </div>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="columns is-centered">
+                <div class="column content">
+                  <p2 class="title is-6"><strong>Give me some <u>wine</u>, <br> please.</strong></p2>
+                  <video id="sd" autoplay controls muted loop playsinline style="height: 300px; margin-top: 20px;">
+                    <source src="./assets/videos/MMFP (Give me some wine).mp4"
+                            type="video/mp4">
+                  </video>
+                </div>
+              </div>
+            </div>
+            
+            <div class="column has-text-centered">
+              <div class="content">
+                <p2 class="title is-6"><strong>May I have some <u>water</u> <br> from the <u>very left</u>?</strong></p2>
+                <video id="sd" autoplay controls muted loop playsinline style="height: 300px; margin-top: 20px;">
+                  <source src="./assets/videos/MMFP (unseen, water, very left).mp4"
+                          type="video/mp4">
+                </video>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Video. -->
+          <div class="columns is-left" style="margin-top: 40px;">
+            <div class="content">
+              <h2 class="title is-4">Example 2: 7-DoF Robot Waving Motion</h2>
+            </div>            
+          </div>
+
+          <div class="columns is-centered">
+            <div class="column has-text-centered">
+              <div class="content">
+                <p2 class="title is-6"><strong>Wave your hand.</strong></p2> 
+                <video id="sd" autoplay controls muted loop playsinline style="height: 220px; margin-top: 45px;">
+                  <source src="./assets/videos/MMFP (Wave your hand).mp4"
+                          type="video/mp4">
+                </video>
+              </div>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="columns is-centered">
+                <div class="column content">
+                  <p2 class="title is-6"><strong>Look to the <u>very left</u> and <br> wave your hand.</strong></p2>
+                  <video id="sd" autoplay controls muted loop playsinline style="height: 220px; margin-top: 20px;">
+                    <source src="./assets/videos/MMFP (Look to the very left and wave your hand).mp4"
+                            type="video/mp4">
+                  </video>
+                </div>
+              </div>
+            </div>
+            
+            <div class="column has-text-centered">
+              <div class="content">
+                <p2 class="title is-6"><strong>Look to the <u>front</u> and <br> wave your hand in a <u>small gesture</u>.</strong></p2>
+                <video id="sd" autoplay controls muted loop playsinline style="height: 220px; margin-top: 20px;">
+                  <source src="./assets/videos/MMFP (Look to the front and wave your hand in a small gesture).mp4"
+                          type="video/mp4">
+                </video>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Video. -->
+          <div class="columns is-left" style="margin-top: 40px;">
+            <div class="content">
+              <h2 class="title is-4">Real Robot Experiments</h2>
+            </div>            
+          </div>
+
+          <div class="columns is-centered">
+            <div class="column has-text-centered">
+              <div class="content">
+                <p2 class="title is-6"><strong>Give me some <u>wine</u>.</strong></p2>
+                <video id="sd" autoplay controls muted loop playsinline style="height: 300px; margin-top: 0px;">
+                  <source src="./assets/videos/MMFP_RealRobot (Give me some wine).mp4"
+                          type="video/mp4">
+                </video>
+              </div>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="columns is-centered">
+                <div class="column content">
+                  <p2 class="title is-6"><strong>Give me some <u>water</u> and pour it from the <u>very left</u>.</strong></p2>
+                  <video id="sd" autoplay controls muted loop playsinline style="height: 300px; margin-top: 0px;">
+                    <source src="./assets/videos/MMFP_RealRobot (Give me some water and pour it from the very left).mp4"
+                            type="video/mp4">
+                  </video>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="columns is-centered">
+            <div class="column has-text-centered">
+              <div class="content">
+                <p2 class="title is-6"><strong>Turn to the <u>front</u> and wave your hand in a <u>very big gesture</u>.</strong></p2>
+                <video id="sd" autoplay controls muted loop playsinline style="height: 400px; margin-top: 20px;">
+                  <source src="./assets/videos/MMFP_RealRobot (Turn to the front and wave your hand in a very big gesture).mp4"
+                          type="video/mp4">
+                </video>
+              </div>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="columns is-centered">
+                <div class="column content">
+                  <p2 class="title is-6"><strong>Turn to the <u>very right</u> and wave your hand.</strong></p2>
+                  <video id="sd" autoplay controls muted loop playsinline style="height: 400px; margin-top: 20px;">
+                    <source src="./assets/videos/MMFP_RealRobot (Turn to the very right and wave your hand).mp4"
+                            type="video/mp4">
+                  </video>
+                </div>
+              </div>
+            </div>
+          </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Developing text-based robot trajectory generation models is made particularly difficult by the small dataset size, high
+dimensionality of the trajectory space, and the inherent complexity of the text-conditional motion distribution. Recent
+manifold learning-based methods have partially addressed the dimensionality and dataset size issues, but struggle
+with the complex text-conditional distribution. In this paper we propose a text-based trajectory generation model that
+attempts to address all three challenges while relying on only a handful of demonstration trajectory data. Our key
+idea is to leverage recent flow-based models capable of capturing complex conditional distributions, not directly in the
+high-dimensional trajectory space, but rather in the low-dimensional latent coordinate space of the motion manifold,
+with deliberately designed regularization terms to ensure smoothness of motions and robustness to text variations. We
+show that our Motion Manifold Flow Primitive (MMFP) framework can accurately generate qualitatively distinct motions
+for a wide range of text inputs, significantly outperforming existing methods.
+          </p>
+        </div>
+      </div>
+    </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <h2 class="title is-3">Summary</h2>
+    </div>
+
+    <div class="columns is-left" style="margin: 40px;">
+      <h2 class="title is-4"><span class="pretty-number">1</span> Dataset: SE(3) Pouring Trajectories</h2>
+    </div>
+    <div class="content is-centered has-text-centered" style="margin: 40px;">
+      <image src="./assets/figures/datasets.JPG" style="width: 100%;"></image>
+    </div>
+
+    <div class="columns is-left" style="margin: 40px;">
+      <h2 class="title is-4"><span class="pretty-number">2</span> Three Key Challenges</h2>
+    </div>
+    <div class="content is-centered has-text-centered" style="margin: 40px;">
+      <image src="./assets/figures/challenges.JPG" style="width: 90%;"></image>
+    </div>
+
+    <div class="columns is-left" style="margin: 40px;">
+      <h2 class="title is-4"><span class="pretty-number">3</span> Curse of Dimensionality</h2>
+    </div>
+    <div class="content is-centered has-text-centered" style="margin: 0px;">
+      <img src="./assets/figures/failures_in_high_D_space.JPG" style="width: 70%; margin: 00px;">
+      <div class="column is-full-height" style="width: 100%; text-align: center;">
+        <p style="color: #ff0000;">
+          <span class="pretty-exclamation" style="margin-right: 4px;">!</span>
+            A naive application of existing algorithms directly in the 
+            <strong style="color: #ff0000;">high-dimensional trajectory space</strong>
+            <br> significantly fails, given only <strong style="color: #ff0000;">a handful of demonstration data</strong>.
+        </p>
+      </div>
+    </div>
+
+    <div class="columns is-left" style="margin: 40px;">
+      <h2 class="title is-4"><span class="pretty-number">4</span> Previous Works: Manifold-based Models</h2>
+    </div>
+    <div class="column content is-centered has-text-centered">
+      <video id="sd" autoplay controls muted loop playsinline style="height: 400px; margin-top: 0px;">
+        <source src="./assets/videos/Existing_MMP.mp4"
+                type="video/mp4">
+      </video>
+    </div>
+    <div class="column is-full-height" style="width: 100%; text-align: center;">
+      <p style="color: #ff0000;">
+        <span class="pretty-exclamation" style="margin-right: 4px;">!</span>
+          The conditional autoencoder architecture, where the decoder takes both the latent variable \(z\) and text \(\tau\) as inputs, <br>
+          struggles to capture <strong style="color: #ff0000;">complex text dependencies in motion distributions</strong> while addressing issues related to dimensionality and dataset size.
+      </p>
+    </div>
+    <div class="column is-full-height" style="width: 100%; text-align: left;">
+      <p>
+        <strong>References</strong>: <br>
+        1. Task-Conditioned Variational Autoencoders for Learning Movement Primitives (Noseworthy et al., CoRL 2019) <br>        
+        2. Equivariant Motion Manifold Primitives (Lee et al., CoRL 2023)
+      </p>
+    </div>
+
+    <div class="columns is-left has-text-centered" style="margin: 40px;">
+      <h2 class="title is-4"><span class="pretty-number">5</span> Solution: Motion Manifold Flow Primitives</h2>
+    </div>
+    <div class="content is-centered has-text-centered" style="margin: 0px;">
+      <img src="./assets/figures/mmfp.JPG" style="width: 70%; margin: 00px;">
+    </div>
+
+    <div class="columns is-center has-text-centered" style="margin: 40px;">
+      <h2 class="title is-5 "> &#42 Language-Guided Trajectory Generation with MMFP and Sentece-BERT</h2>
+    </div>
+    <div class="content is-centered has-text-centered" style="margin: 0px;">
+      <img src="./assets/figures/mmfp_language.JPG" style="width: 80%; margin: 00px;">
+    </div>
+
+  </div>
+</section>
+
+<!-- Citation. -->
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-3">Citation</h2>
+    <pre><code>
+      @article{lee2024motion,
+        title={Motion Manifold Flow Primitives for Language-Guided Trajectory Generation},
+        author={Lee, Yonghyeon and Lee, Byeongho and Kim, Seungyeon and Park, Frank C},
+        journal={arXiv preprint arXiv:2407.19681},
+        year={2024}
+      }
+    </code></pre>
+  </div>
+</section>
+
+<!-- Footer. -->
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <p>
+        Website template modified from <a href="https://nerfies.github.io/">NeRFies</a>.
+      </p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
